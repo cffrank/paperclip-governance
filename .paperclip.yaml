@@ -4,35 +4,35 @@ agents:
     adapter:
       type: claude_local
       config:
-        model: claude-opus-4-6
+        model: claude-sonnet-4-6
         dangerouslySkipPermissions: true
         maxTurnsPerRun: 300
     runtime:
       heartbeat:
         enabled: true
-        intervalSec: 600
+        intervalSec: 1800
         wakeOnDemand: true
   cfo:
     adapter:
       type: claude_local
       config:
-        model: claude-sonnet-4-6
+        model: claude-haiku-4-5-20251001
         dangerouslySkipPermissions: true
         maxTurnsPerRun: 300
     runtime:
       heartbeat:
         enabled: true
-        intervalSec: 900
+        intervalSec: 3600
         wakeOnDemand: true
   coo:
     adapter:
       type: claude_local
       config:
-        model: claude-sonnet-4-6
+        model: claude-haiku-4-5-20251001
         dangerouslySkipPermissions: true
         maxTurnsPerRun: 300
     runtime:
       heartbeat:
         enabled: true
-        intervalSec: 600
+        intervalSec: 1800
         wakeOnDemand: true
