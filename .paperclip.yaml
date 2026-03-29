@@ -2,9 +2,11 @@ schema: paperclip/v1
 agents:
   chief-of-staff:
     adapter:
+      type: claude_local
       config:
         model: claude-opus-4-6
         dangerouslySkipPermissions: true
+        maxTurnsPerRun: 300
     runtime:
       heartbeat:
         enabled: true
@@ -12,9 +14,11 @@ agents:
         wakeOnDemand: true
   cfo:
     adapter:
+      type: claude_local
       config:
         model: claude-sonnet-4-6
         dangerouslySkipPermissions: true
+        maxTurnsPerRun: 300
     runtime:
       heartbeat:
         enabled: true
@@ -22,9 +26,11 @@ agents:
         wakeOnDemand: true
   coo:
     adapter:
+      type: claude_local
       config:
         model: claude-sonnet-4-6
         dangerouslySkipPermissions: true
+        maxTurnsPerRun: 300
     runtime:
       heartbeat:
         enabled: true
