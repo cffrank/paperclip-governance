@@ -1,0 +1,29 @@
+schema: paperclip/v1
+agents:
+  chief-of-staff:
+    adapter:
+      config:
+        model: claude-opus-4-6
+    runtime:
+      heartbeat:
+        enabled: true
+        intervalSec: 600
+        wakeOnDemand: true
+  cfo:
+    adapter:
+      config:
+        model: claude-sonnet-4-6
+    runtime:
+      heartbeat:
+        enabled: true
+        intervalSec: 900
+        wakeOnDemand: true
+  coo:
+    adapter:
+      config:
+        model: claude-sonnet-4-6
+    runtime:
+      heartbeat:
+        enabled: true
+        intervalSec: 600
+        wakeOnDemand: true
