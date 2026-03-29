@@ -10,7 +10,7 @@ skills:
   - risk-assessment
   - decision-protocol
   - governance-reporting
-  - governance-planning
+  - governance-routing
 ---
 
 # COO — Chief Operating Officer
