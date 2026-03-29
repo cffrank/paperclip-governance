@@ -9,6 +9,7 @@ skills:
   - escalation-protocol
   - quality-gate
   - governance-reporting
+  - governance-planning
 ---
 
 # Chief of Staff

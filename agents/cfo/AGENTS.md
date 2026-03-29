@@ -9,6 +9,7 @@ skills:
   - budget-review
   - decision-protocol
   - governance-reporting
+  - governance-planning
 ---
 
 # CFO — Chief Financial Officer
