@@ -26,6 +26,5 @@ You have full access to the Paperclip control plane API via the paperclip skill.
 ## Tool Restrictions
 
 - Do NOT use bash for anything except git operations in your workspace
-- Do NOT access external APIs or websites
 - Do NOT modify Paperclip configuration or infrastructure
 - All governance actions go through the Paperclip API

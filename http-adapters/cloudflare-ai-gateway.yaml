@@ -1,0 +1,43 @@
+# HTTP Adapter: Cloudflare AI Gateway (OpenAI-compat endpoint)
+# Uses the /compat endpoint — provider is selected via model name prefix.
+# Provider credentials (Cerebras, Workers AI, etc.) are configured in the
+# CF dashboard — agents only authenticate to the gateway itself.
+
+adapter:
+  id: cloudflare-ai-gateway
+  name: Cloudflare AI Gateway
+  type: http
+  version: "1"
+
+connection:
+  base_url: "https://gateway.ai.cloudflare.com/v1/${CLOUDFLARE_ACCOUNT_ID}/${CF_AI_GATEWAY_ID}/compat"
+  timeout_ms: 30000
+  retry:
+    max_attempts: 3
+    backoff_ms: 500
+    backoff_multiplier: 2
+
+# Provider routing — encode provider in model name prefix, not path
+# Workers AI:  workers-ai/@cf/meta/llama-3.3-70b-instruct-fp8-fast
+# Cerebras:    cerebras/llama-3.3-70b
+providers:
+  workers_ai:
+    default_model: "workers-ai/@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+
+  cerebras:
+    default_model: "cerebras/llama-3.3-70b"
+
+# Gateway authentication — OpenAI-compat uses standard Authorization header
+auth:
+  header: "Authorization"
+  secret: "Bearer ${CLOUDFLARE_API_TOKEN}"
+
+# Cloudflare AI Gateway control headers
+gateway_headers:
+  cf-aig-skip-cache: "false"          # Enable response caching
+  cf-aig-cache-ttl: "3600"            # Cache TTL in seconds (1 hour)
+  cf-aig-collect-log: "true"          # Enable request logging in dashboard
+
+# Per-request headers
+default_headers:
+  Content-Type: "application/json"

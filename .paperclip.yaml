@@ -1,10 +1,16 @@
 schema: paperclip/v1
+
+http_adapters:
+  - http-adapters/cloudflare-ai-gateway.yaml
+
 agents:
+  # --- C-Suite ---
   chief-of-staff:
     adapter:
-      type: claude_local
+      type: http
+      adapter_id: cloudflare-ai-gateway
       config:
-        model: claude-sonnet-4-6
+        model: "workers-ai/@cf/moonshot-ai/kimi-k2.5"
         dangerouslySkipPermissions: true
         maxTurnsPerRun: 300
     runtime:
@@ -12,11 +18,13 @@ agents:
         enabled: true
         intervalSec: 1800
         wakeOnDemand: true
+
   cfo:
     adapter:
-      type: claude_local
+      type: http
+      adapter_id: cloudflare-ai-gateway
       config:
-        model: claude-haiku-4-5-20251001
+        model: "workers-ai/@cf/openai/gpt-oss-120b"
         dangerouslySkipPermissions: true
         maxTurnsPerRun: 300
     runtime:
@@ -24,15 +32,118 @@ agents:
         enabled: true
         intervalSec: 3600
         wakeOnDemand: true
+
   coo:
     adapter:
-      type: claude_local
+      type: http
+      adapter_id: cloudflare-ai-gateway
       config:
-        model: claude-haiku-4-5-20251001
+        model: "workers-ai/@cf/openai/gpt-oss-120b"
         dangerouslySkipPermissions: true
         maxTurnsPerRun: 300
     runtime:
       heartbeat:
         enabled: true
         intervalSec: 1800
+        wakeOnDemand: true
+
+  # --- Directors ---
+  it-director:
+    adapter:
+      type: http
+      adapter_id: cloudflare-ai-gateway
+      config:
+        model: "workers-ai/@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+        dangerouslySkipPermissions: true
+        maxTurnsPerRun: 300
+    runtime:
+      heartbeat:
+        enabled: true
+        intervalSec: 3600
+        wakeOnDemand: true
+
+  # --- Leads (report to IT Director) ---
+  devops-lead:
+    adapter:
+      type: http
+      adapter_id: cloudflare-ai-gateway
+      config:
+        model: "workers-ai/@cf/deepseek-ai/deepseek-r1-distill-qwen-32b"
+        dangerouslySkipPermissions: true
+        maxTurnsPerRun: 300
+    runtime:
+      heartbeat:
+        enabled: true
+        intervalSec: 3600
+        wakeOnDemand: true
+
+  qa-lead:
+    adapter:
+      type: http
+      adapter_id: cloudflare-ai-gateway
+      config:
+        model: "workers-ai/@cf/deepseek-ai/deepseek-r1-distill-qwen-32b"
+        dangerouslySkipPermissions: true
+        maxTurnsPerRun: 300
+    runtime:
+      heartbeat:
+        enabled: true
+        intervalSec: 3600
+        wakeOnDemand: true
+
+  ai-ml-lead:
+    adapter:
+      type: http
+      adapter_id: cloudflare-ai-gateway
+      config:
+        model: "workers-ai/@cf/deepseek-ai/deepseek-r1-distill-qwen-32b"
+        dangerouslySkipPermissions: true
+        maxTurnsPerRun: 300
+    runtime:
+      heartbeat:
+        enabled: true
+        intervalSec: 3600
+        wakeOnDemand: true
+
+  app-dev-lead:
+    adapter:
+      type: http
+      adapter_id: cloudflare-ai-gateway
+      config:
+        model: "workers-ai/@cf/deepseek-ai/deepseek-r1-distill-qwen-32b"
+        dangerouslySkipPermissions: true
+        maxTurnsPerRun: 300
+    runtime:
+      heartbeat:
+        enabled: true
+        intervalSec: 3600
+        wakeOnDemand: true
+
+  dba-lead:
+    adapter:
+      type: http
+      adapter_id: cloudflare-ai-gateway
+      config:
+        model: "workers-ai/@cf/deepseek-ai/deepseek-r1-distill-qwen-32b"
+        dangerouslySkipPermissions: true
+        maxTurnsPerRun: 300
+    runtime:
+      heartbeat:
+        enabled: true
+        intervalSec: 3600
+        wakeOnDemand: true
+
+  # --- Staff (reports to COO) ---
+  technical-writer:
+    adapter:
+      type: http
+      adapter_id: cloudflare-ai-gateway
+      config:
+        model: "workers-ai/@cf/meta/llama-3.1-8b-instruct"
+        dangerouslySkipPermissions: true
+        maxTurnsPerRun: 300
+    runtime:
+      heartbeat:
+        enabled: true
+        intervalSec: 3600
         wakeOnDemand: true
