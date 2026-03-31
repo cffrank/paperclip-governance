@@ -133,6 +133,64 @@ agents:
         intervalSec: 3600
         wakeOnDemand: true
 
+  # --- CMO (reports to Chief of Staff) ---
+  cmo:
+    adapter:
+      type: http
+      adapter_id: cloudflare-ai-gateway
+      config:
+        model: "workers-ai/@cf/openai/gpt-oss-120b"
+        dangerouslySkipPermissions: true
+        maxTurnsPerRun: 300
+    runtime:
+      heartbeat:
+        enabled: true
+        intervalSec: 1800
+        wakeOnDemand: true
+
+  # --- Marketing Team (report to CMO) ---
+  seo-specialist:
+    adapter:
+      type: http
+      adapter_id: cloudflare-ai-gateway
+      config:
+        model: "workers-ai/@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+        dangerouslySkipPermissions: true
+        maxTurnsPerRun: 300
+    runtime:
+      heartbeat:
+        enabled: true
+        intervalSec: 3600
+        wakeOnDemand: true
+
+  content-creator:
+    adapter:
+      type: http
+      adapter_id: cloudflare-ai-gateway
+      config:
+        model: "workers-ai/@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+        dangerouslySkipPermissions: true
+        maxTurnsPerRun: 300
+    runtime:
+      heartbeat:
+        enabled: true
+        intervalSec: 3600
+        wakeOnDemand: true
+
+  growth-hacker:
+    adapter:
+      type: http
+      adapter_id: cloudflare-ai-gateway
+      config:
+        model: "workers-ai/@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+        dangerouslySkipPermissions: true
+        maxTurnsPerRun: 300
+    runtime:
+      heartbeat:
+        enabled: true
+        intervalSec: 3600
+        wakeOnDemand: true
+
   # --- Staff (reports to COO) ---
   technical-writer:
     adapter:
